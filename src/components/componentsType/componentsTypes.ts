@@ -12,10 +12,13 @@ export type InitialValuesLogin = {
 };
 
 export type NewEventList = {
-  start?: stringOrDate | null;
-  end?: stringOrDate | null;
-  title?: string | undefined;
-  newStart?: stringOrDate | null;
-  newEnd?: stringOrDate | null;
-  id?: string
+  start: stringOrDate | null;
+  end: stringOrDate | null;
+  title: string;
+  id: string;
+};
+
+export type NewDateEventList = {
+  newStart: stringOrDate | null;
+  newEnd: stringOrDate | null;
 };

@@ -5,7 +5,12 @@ export type InitialStateAutarizationType = {
 };
 
 export type InitialStateCalendarType = {
-  myEventsList: Array<any>;
-  isShowNewModalView: boolean;
-  isShowCreateModalView: boolean;
+  myEventsList: Array<NewEventList>;
+  isShowCreateEventListModalView: boolean;
+  isShowChangeEventListModalView: boolean;
 };
+
+export type SetCreateTitleCalendar = {
+  createTitleEvent: string
+  newCalendarId: string
+}

@@ -1,5 +1,5 @@
 import { NewEventList } from './../components/componentsType/componentsTypes';
-import { InitialStateCalendarType } from './reducersTypes/reducersTypes';
+import { InitialStateCalendarType, SetCreateTitleCalendar } from './reducersTypes/reducersTypes';
 import { InferActionTypes } from "./redux-store";
 
 const SET_NEW_EVENT_LIST = 'SET_NEW_EVENT_LIST';
@@ -9,46 +9,44 @@ const CREATE_TITLE = 'CREATE_TITLE';
 
 let initialState: InitialStateCalendarType = {
     myEventsList: [],
-    isShowNewModalView: false,
-    isShowCreateModalView: false
+    isShowCreateEventListModalView: false,
+    isShowChangeEventListModalView: false
 };
 
 type InitialStateType = typeof initialState
 type ActionTypes = InferActionTypes<typeof action>;
 
-    interface SetCreateTitle {
-        createTitleEvent:string | undefined
-         oldTitle: string | undefined
-    }
+    
 
 const calendarReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case SET_NEW_EVENT_LIST:
             return {
                 ...state,
-                myEventsList: [...state.myEventsList, {start: action.newEventList.start, end: action.newEventList.end, title: action.newEventList.title}]
+                myEventsList: [...state.myEventsList, {start: action.newEventList.start, end: action.newEventList.end, title: action.newEventList.title, id: action.newEventList.id}]
             };
 
         case IS_SHOW_NEW_MODAL_VIEW:
             return {
                 ...state,
-                isShowNewModalView: action.setShowNewModalView
+                isShowCreateEventListModalView: action.setShowNewModalView
             };
 
         case IS_SHOW_CREATE_MODAL_VIEW:
             return {
                 ...state,
-                isShowCreateModalView: action.setShowCreateModalView
+                isShowChangeEventListModalView: action.setShowCreateModalView
             };
 
         case CREATE_TITLE:
             return {
                 ...state,
                 myEventsList: state.myEventsList.map((item) => {
-                    debugger
-                    if (item.title === action.setCreateTitle.oldTitle) {
-                     return item.title = action.setCreateTitle.createTitleEvent
+                    if (item.id === action.setCreateTitle.newCalendarId) {
+                        item.title = action.setCreateTitle.createTitleEvent
+                        return item
                     }
+                    return item
                 })
             };
 
@@ -73,7 +71,7 @@ export const action = {
         setShowCreateModalView
     } as const),
 
-    setCreateTitle: (setCreateTitle: SetCreateTitle) => ({
+    setCreateTitle: (setCreateTitle: SetCreateTitleCalendar) => ({
         type: CREATE_TITLE,
         setCreateTitle
     } as const)

@@ -1,42 +1,45 @@
 import styles from './myCalendar.module.css';
+import { stringOrDate } from "react-big-calendar";
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from 'react';
 import MyToolbar from './myToolbar/MyToolbar';
-import { NewEventList } from '../componentsType/componentsTypes';
+import { NewEventList, NewDateEventList } from '../componentsType/componentsTypes';
 import { action } from '../../redux/calendar-reducer';
 import { AppStateType } from '../../redux/redux-store';
 import { useDispatch, useSelector } from 'react-redux';
-import AddNewEventList from './addNewEventList/AddNewEventList';
-import CreateEventList from './createEventList/CreateEventList';
+import CreateEventList from './createNewEventList/CreateEventListEventList';
+import ChangeEventList from './changeEventList/ChangeEventList';
 
 require('moment/locale/ru.js')
 
 const MyCalendar = () => {
-    const [newDateEvent, setNewDateEvent] = useState<NewEventList>({ newStart: Date(), newEnd: Date() });
-    const [oldTitle, setOldTitle] = useState<string | undefined>('');
+    const [newDateEvent, setNewDateEvent] = useState<NewDateEventList>({ newStart: Date(), newEnd: Date() });
+    const [newCalendarId, setNewCalendarId] = useState<string>('');
     const myEventsList = useSelector<AppStateType, Array<NewEventList>>((state) => state.calendarPage.myEventsList);
-    const showNewModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowNewModalView);
-    const showCreateModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowCreateModalView);
+    const showCreateEventListModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowCreateEventListModalView);
+    const showChangeEventListModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowChangeEventListModalView);
     const dispatch = useDispatch();
+    
 
 
 
-    const handleSelect = ({ start, end }: NewEventList) => {
+    const handleSelect = ({ start, end }: {start: stringOrDate, end: stringOrDate}) => {
         dispatch(action.isShowNewModalView(true))
         setNewDateEvent({ newStart: start, newEnd: end })
     }
 
-    const getOldValue = (title: string | undefined) => {
+    const getOldValue = (calendarEvent: string) => {
         dispatch(action.isShowCreateModalView(true));
-        setOldTitle(title)
+        
+        setNewCalendarId(calendarEvent)
     }
 
     const localizer = momentLocalizer(moment);
 
     return (
-        <div className={!showNewModalView ? styles.wrapperCalendar : styles.wrapperBlackCalenadr}>
+        <div className={!showCreateEventListModalView ? styles.wrapperCalendar : styles.wrapperBlackCalenadr}>
             <Calendar
                 selectable
                 localizer={localizer}
@@ -49,13 +52,13 @@ const MyCalendar = () => {
                 defaultView={Views.MONTH}
                 className={styles.contentCalenadr}
                 onSelectSlot={({ start, end }) => handleSelect({ start, end })}
-                onSelectEvent={event => getOldValue(event.title)}
+                onSelectEvent={event => getOldValue(event.id)}
                 components={{
                     toolbar: (props) => <MyToolbar {...props} />
                 }}
             />
-            {showNewModalView && <AddNewEventList newDateEvent={newDateEvent} />}
-            {showCreateModalView && <CreateEventList oldTitle={oldTitle} />}
+            {showCreateEventListModalView && <CreateEventList newDateEvent={newDateEvent} />}
+            {showChangeEventListModalView && <ChangeEventList newCalendarId={newCalendarId}/>}
         </div>
     );
 }
