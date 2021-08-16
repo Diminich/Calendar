@@ -1,0 +1,31 @@
+.wrapperHeader {
+  height: 75px;
+  width: 100%;
+  border-bottom: 1px solid rgba(112, 112, 112, 0.2);
+  box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.textMenuElement {
+  height: 100%;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textMenuElement:hover {
+  position: relative;
+}
+
+.textMenuElement:hover:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid orange;
+  position: absolute;
+  bottom: 0;
+}

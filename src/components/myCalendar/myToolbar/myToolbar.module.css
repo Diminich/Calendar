@@ -1,0 +1,8 @@
+.wrapperToolbar {
+  height: 8%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+}
