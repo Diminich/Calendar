@@ -16,18 +16,20 @@ const SelectView = ({ searchTitleEvent, setSearchTitleEvent, setShowSearchModalV
   const [searchElement, setSearchElement] = useState<Array<NewEventList>>([])
   const myEventsList = useSelector<AppStateType, Array<NewEventList>>((state) => state.calendarPage.myEventsList);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     setSearchElement(myEventsList.filter((item) => {
       return item.title.toLowerCase().includes(searchTitleEvent.toLowerCase())
     }));
   }, [searchTitleEvent, myEventsList])
 
+
   const clickSearchValue = (start: stringOrDate) => {
     dispatch(action.setSearchDate(start))
     setShowSearchModalView(false)
     setSearchTitleEvent('')
   }
+
   return (
     <div className={styles.wrapperSelectView}>
       <div className={styles.wrapperСloseButtonModal}>
@@ -35,18 +37,18 @@ const SelectView = ({ searchTitleEvent, setSearchTitleEvent, setShowSearchModalV
           className={styles.closeButtonModal}
           onClick={() => setShowSearchModalView(false)}
         >
-          X
+         X
         </button>
       </div>
 
       {searchElement.length !== 0 ?
-        searchElement.map(({id, start, title}) => (
+        searchElement.map(({ id, start, title }) => (
           <div
             className={styles.titlesEvent}
             key={id}
             onClick={() => clickSearchValue(start)}
           >
-            <span style={{marginLeft: 5}}>{title}</span>
+            <span style={{ marginLeft: 5 }}>{title}</span>
           </div>
         ))
         : <div className={styles.notFoundItem}>Ничего не найдено!</div>}

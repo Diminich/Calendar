@@ -3,8 +3,15 @@ import { InferActionTypes } from "./redux-store";
 
 const SET_LOGIN = 'SET_LOGIN';
 
-let initialState: InitialStateAutarizationType = {
-    isLogin: true
+const initialState: InitialStateAutarizationType = {
+    isLogin: true,
+    user: {
+        name: 'Admin',
+        age: '25',
+        password: '12345678',
+        language: 'русский',
+        email: 'admin@gmail.com'
+    }
 };
 
 type InitialStateType = typeof initialState

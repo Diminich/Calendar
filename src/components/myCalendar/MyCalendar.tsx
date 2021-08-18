@@ -17,10 +17,12 @@ require('moment/locale/ru.js')
 const MyCalendar = () => {
     const [newDateEvent, setNewDateEvent] = useState<NewDateEventList>({ newStart: Date(), newEnd: Date() });
     const [newCalendarId, setNewCalendarId] = useState<string>('');
+    
     const myEventsList = useSelector<AppStateType, Array<NewEventList>>((state) => state.calendarPage.myEventsList);
     const searchDate = useSelector<AppStateType, stringOrDate>((state) => state.calendarPage.searchDate);
     const showCreateEventListModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowCreateEventListModalView);
     const showChangeEventListModalView = useSelector<AppStateType, boolean>((state) => state.calendarPage.isShowChangeEventListModalView);
+    
     const dispatch = useDispatch();
     
     const handleSelect = ({ start, end }: { start: stringOrDate, end: stringOrDate }) => {

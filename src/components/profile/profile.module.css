@@ -1,0 +1,78 @@
+.wrapperProfile {
+  height: calc(100% - 76px);
+  width: 100%;
+  background-color: #9053c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentProfile {
+  height: 75%;
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.wrapperExitButton {
+  height: 10%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.exitButton {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 50%;
+  height: 35px;
+  border-radius: 25px;
+  background: #57b846;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  transition: all 0.4s;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+}
+
+.exitButton:hover {
+  background: #333;
+}
+
+.wrapperInformationUser {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.informationUser {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.myEventsList {
+  height: 35%;
+  width: 91%;
+  padding-top: 10px;
+  overflow-y: auto;
+  border-top: 1px solid;
+}

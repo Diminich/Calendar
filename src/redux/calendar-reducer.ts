@@ -9,7 +9,7 @@ const IS_SHOW_CREATE_MODAL_VIEW = 'IS_SHOW_CREATE_MODAL_VIEW';
 const CREATE_TITLE = 'CREATE_TITLE';
 const SEARCH_DATE = 'SEARCH_DATE';
 
-let initialState: InitialStateCalendarType = {
+const initialState: InitialStateCalendarType = {
     myEventsList: [{
         id: '1',
         title: 'Встреча с Дашей',

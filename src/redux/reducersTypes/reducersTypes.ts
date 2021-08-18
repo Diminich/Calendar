@@ -3,6 +3,15 @@ import { NewEventList } from "../../components/componentsType/componentsTypes";
 
 export type InitialStateAutarizationType = {
   isLogin: boolean;
+  user: User;
+};
+ 
+export type User = {
+  name: string;
+  age: string;
+  password: string;
+  language: string;
+  email: string;
 };
 
 export type InitialStateCalendarType = {

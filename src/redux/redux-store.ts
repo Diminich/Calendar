@@ -3,9 +3,9 @@ import thunkMiddleware from 'redux-thunk';
 import autarizationReducer from "./autarization-reducer";
 import calendarReducer from "./calendar-reducer";
 
-let reducers = combineReducers({
+const reducers = combineReducers({
    autarizationPage: autarizationReducer,
-   calendarPage: calendarReducer
+   calendarPage: calendarReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));

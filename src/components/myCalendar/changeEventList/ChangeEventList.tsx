@@ -25,17 +25,17 @@ const ChangeEventList = ({ newCalendarId }: ChangeEventListProps) => {
         }
     }
 
-    const clouseNewTitleEvent = () => {
+    const closeNewTitleEvent = () => {
         dispatch(action.isShowCreateModalView(false))
         setCreateTitleEvent('')
     }
 
     return (
         <div className={styles.wrapperChangeEventList}>
-            <input className={styles.input} value={createTitleEvent} onChange={(e) => setCreateTitleEvent(e.currentTarget.value)} placeholder='Изменить' />
+            <input className={styles.input} autoFocus={true} value={createTitleEvent} onChange={(e) => setCreateTitleEvent(e.currentTarget.value)} placeholder='Изменить' />
             {error ? <span style={{ color: 'red' }}>Введите символ</span> : <div style={{ marginTop: 22 }} />}
             <button className={styles.button} onClick={() => saveNewTitleEvent()}>Изменить</button>
-            <button className={styles.button} onClick={() => clouseNewTitleEvent()}>Закрыть</button>
+            <button className={styles.button} onClick={() => closeNewTitleEvent()}>Закрыть</button>
         </div>
     )
 }

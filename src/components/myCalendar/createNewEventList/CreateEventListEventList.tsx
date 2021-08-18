@@ -31,7 +31,7 @@ const CreateEventList = ({ newDateEvent }: CreateEventListProps) => {
 
     return (
         <div className={styles.wrapperCreateEventList}>
-            <input className={styles.input} value={newTitleEvent} onChange={(e) => setTitleEvent(e.currentTarget.value)} placeholder='Добавить' />
+            <input className={styles.input} autoFocus={true} value={newTitleEvent} onChange={(e) => setTitleEvent(e.currentTarget.value)} placeholder='Добавить' />
             {error ? <span style={{ color: 'red' }}>Введите символ</span> : <div style={{ marginTop: 22 }} />}
             <button className={styles.button} onClick={() => saveNewTitleEvent()}>Добавить</button>
             <button className={styles.button} onClick={() => clouseNewTitleEvent()}>Закрыть</button>
