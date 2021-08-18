@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { action } from '../../../redux/calendar-reducer';
-import styles from './createEventList.module.css';
+import styles from './changeEventList.module.css';
 
-interface CreateEventListProps {
+interface ChangeEventListProps {
     newCalendarId: string
 }
 
-const ChangeEventList = ({ newCalendarId }: CreateEventListProps) => {
+const ChangeEventList = ({ newCalendarId }: ChangeEventListProps) => {
     const dispatch = useDispatch();
     const [error, setError] = useState(false);
 

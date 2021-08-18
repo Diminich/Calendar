@@ -1,8 +1,23 @@
 .wrapperToolbar {
   height: 8%;
-  width: 30%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.navigatoinButton {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
   margin-left: 20px;
+}
+
+.searchModalTitilesView {
+  width: 20%;
+  margin-right: 20px;
+}
+
+.searchInput {
+  width: 100%;
 }

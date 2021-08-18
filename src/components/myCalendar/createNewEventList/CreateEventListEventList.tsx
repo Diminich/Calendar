@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { action } from '../../../redux/calendar-reducer';
 import { NewDateEventList } from '../../componentsType/componentsTypes';
-import styles from './addNewEventList.module.css';
+import styles from './createEventListProps.module.css';
 
 interface CreateEventListProps {
     newDateEvent: NewDateEventList

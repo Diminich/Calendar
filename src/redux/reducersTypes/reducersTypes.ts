@@ -1,3 +1,4 @@
+import { stringOrDate } from "react-big-calendar";
 import { NewEventList } from "../../components/componentsType/componentsTypes";
 
 export type InitialStateAutarizationType = {
@@ -6,11 +7,12 @@ export type InitialStateAutarizationType = {
 
 export type InitialStateCalendarType = {
   myEventsList: Array<NewEventList>;
+  searchDate: stringOrDate;
   isShowCreateEventListModalView: boolean;
   isShowChangeEventListModalView: boolean;
 };
 
 export type SetCreateTitleCalendar = {
-  createTitleEvent: string
-  newCalendarId: string
-}
+  createTitleEvent: string;
+  newCalendarId: string;
+};
