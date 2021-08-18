@@ -4,7 +4,7 @@ import { InferActionTypes } from "./redux-store";
 const SET_LOGIN = 'SET_LOGIN';
 
 const initialState: InitialStateAutarizationType = {
-    isLogin: true,
+    isLogin: false,
     user: {
         name: 'Admin',
         age: '25',
